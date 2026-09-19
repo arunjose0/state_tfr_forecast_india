@@ -35,5 +35,5 @@ Due to repository limits, the raw input files are not included. The `data/` fold
 
 ## License
 
-This project is licensed under the MIT License — see the LICENSE file for details.
+This project is licensed under the PolyForm Noncommercial License 1.0.0. Free for academic, research, and other noncommercial use. Commercial use requires a separate license — contact [corresponding author email].
 
