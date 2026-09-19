@@ -137,6 +137,20 @@ model {
 }
 
 generated quantities {
+  array[N_srs] real y_srs_rep;
+  array[N_nfhs] real y_nfhs_rep;
+
+  if (model_type == 2) {
+    for (n in 1:N_srs) {
+      y_srs_rep[n] = normal_rng(x[state_srs[n], time_id_srs[n]], sigma_srs);
+    }
+    for (n in 1:N_nfhs) {
+      y_nfhs_rep[n] = normal_rng(x[state_nfhs[n], time_id_nfhs[n]], sigma_nfhs);
+    }
+  } else {
+    for (n in 1:N_srs) y_srs_rep[n] = 0.0;
+    for (n in 1:N_nfhs) y_nfhs_rep[n] = 0.0;
+  }
   matrix[S, n_fore] tfr_fore;
   matrix[S, max_T] tfr_hist_fit;
   real F = exp(log_F);
@@ -163,3 +177,4 @@ generated quantities {
     }
   }
 }
+
