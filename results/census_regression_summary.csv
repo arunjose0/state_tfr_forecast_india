@@ -1,0 +1,5 @@
+census_year,comparison_type,N,MAE,OLS_slope,OLS_intercept,R_squared
+2001,Model,30,0.1355,0.8974,0.0369,0.6542
+2001,Raw SRS,27,0.1191,0.9174,0.0433,0.6952
+2011,Model,32,0.1156,0.8239,0.0769,0.7117
+2011,Raw SRS,32,0.112,0.8365,0.0709,0.7226

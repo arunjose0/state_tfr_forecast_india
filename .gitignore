@@ -1,0 +1,12 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+*.rds
+data/raw/
+/models/
+/renv/library/
+/renv/local/
+/renv/staging/
+/renv/cache/
+.positai
