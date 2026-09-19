@@ -116,32 +116,11 @@ india_quantiles <- tibble(
 srs_path <- here("data", "cleaned_srs.csv")
 df_srs <- read_csv(srs_path, show_col_types = FALSE)
 
-# Extract India data from original raw sets (since we filtered it out in prep)
-df_srs_india_recent <- tibble()
-# Since we didn't include India in cleaned_srs, we must pull it from the old sources.
-old_recent_path <- here("data", "raw", "srs_tfr_all_reported_1971_2023.rds")
-if (file.exists(old_recent_path)) {
-  df_srs_raw <- readRDS(old_recent_path)
-  df_srs_india_recent <- df_srs_raw |>
-    filter(state == "India") |>
-    mutate(year = as.integer(mid_year)) |>
-    filter(year >= 2013) |>
-    select(year, tfr_total)
-}
-
-# Load older SRS data (1971-2012)
-old_srs_path <- here("data", "raw", "srs_india_rates_1971_2013.xlsx")
-if(file.exists(old_srs_path)) {
-  df_old <- suppressMessages(readxl::read_excel(old_srs_path, skip = 2, col_names = FALSE))
-  df_srs_india_old <- tibble(
-    year = suppressWarnings(as.integer(gsub("\\*", "", df_old[[1]]))),
-    tfr_total = suppressWarnings(as.numeric(df_old[[14]]))
-  ) |> filter(!is.na(year) & year <= 2012 & year >= min_yr)
-  
-  df_srs_india <- bind_rows(df_srs_india_old, df_srs_india_recent)
-} else {
-  df_srs_india <- df_srs_india_recent
-}
+# Extract India aggregate data directly from the cleaned dataset 
+# (It was included during cleaning but filtered out in 01_prepare_stan_data for modeling)
+df_srs_india <- df_srs |>
+  filter(state_clean == "India" & year >= min_yr) |>
+  select(year, tfr_total)
 
 # ── 5. Plot ───────────────────────────────────────────────────────────────────
 cat("Generating plot...\n")

@@ -4,9 +4,9 @@ library(dplyr)
 cat("Extracting posterior estimates of the global floor (F)...\n\n")
 
 models <- c(
-  "Main Model" = "models/fit_main.rds",
-  "Floor Low"  = "models/fit_floor_low.rds",
-  "Floor High" = "models/fit_floor_high.rds"
+  "Main Model" = "results/fit_main.rds",
+  "Floor Low"  = "results/fit_floor_low.rds",
+  "Floor High" = "results/fit_floor_high.rds"
 )
 
 for (m_name in names(models)) {
