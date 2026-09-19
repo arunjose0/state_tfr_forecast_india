@@ -32,3 +32,8 @@ Due to repository limits, the raw input files are not included. The `data/` fold
    - `07_extract_F_values.R`: Extracts final output values.
 
 > **Note**: Fitting the Stan models (scripts `02`, `03`, `04`) can be computationally intensive and takes considerable time. The resulting fitted model objects are large (~1-2GB each) and are thus not included in this repository due to GitHub's file size limits. Code lines that save these model fits to disk have been commented out to prevent accidental massive file creation, but you may uncomment them if you wish to save the posterior samples locally.
+
+## License
+
+This project is licensed under the MIT License — see the LICENSE file for details.
+
